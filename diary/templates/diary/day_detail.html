@@ -1,0 +1,20 @@
+{% extends 'diary/base.html' %}
+
+{% block content %}
+<table class="table">
+  <tr>
+    <th>タイトル</th>
+    <td>{{ day.title　}}</td>
+  </tr>
+  <tr>
+    <th>本文</th>
+    <!--|、このパイプラインを使って、様々なフィルターを書くことができる
+      linebreaksbrはdjangoにもともと用意されているフィルターで、改行コードをbrタグに置換する-->
+    <td>{{ day.text | linebreaksbr }}</td>
+  </tr>
+  <tr>
+    <th>日付</th>
+    <td>{{ day.date }}</td>
+  </tr>
+</table>
+{% endblock %}

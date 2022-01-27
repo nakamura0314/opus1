@@ -1,0 +1,36 @@
+{% extends 'diary/base.html' %}
+
+{% block content %}
+<p>{{ day.title }}</p>
+<form action="" method="POST">
+  <table class="table">
+    <tr>
+      <th>タイトル</th>
+      <td>{{ form.title }}</td>
+    </tr>
+    <tr>
+      <th>本文</th>
+      <td>{{ form.text }}</td>
+    </tr>
+    <tr>
+      <th>日付</th>
+      <td>{{ form.date }}</td>
+    </tr>
+  </table>
+  <button type="submit" class="btn btn-primary">送信</button>
+  {% csrf_token %}
+</form>
+{% endblock %}
+<!--#actionには、URLを指定することで、サーバのどのURLにデータを送信するかを指定する
+空文字列の場合は、現在のページに送信する
+methodがPOSTの場合は、サーバに送るデータを隠してくれる
+methodがGETの場合は、URLに入力に内容（サーバに送信するデータ）を含めて送信する
+<form action="" method="POST">
+  #forms.ModelFormから、下記のようにすると入力欄を自動で作成して表示してくる
+  _pとすることで入力欄はpタグになる、ulにすると箇条書きになる
+  {{ form.as_p }}
+  #form内のsubmitを押すと、form内の入力した内容がサーバに送信される
+  #formにはこのボタンを作ると覚える
+  <button type="submit">送信</button>
+  #ウイルス対策
+  {% csrf_token %}-->
